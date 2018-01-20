@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Listing Odd Numbers</title>
+    </head>
+    <body>
+
+        <h3>Odd Numbers Between 1 and 99</h3>
+        <div id="odd_numbers"></div>
+
+        <script>
+            var first = 1;
+            var last = 99;
+            while (first <= last) {
+                if ((first % 2) != 0) {
+                    document.getElementById("odd_numbers").innerHTML += first + ", ";
+                }
+                first = first + 1;
+            }
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Listing The Factors Of A Number.</title>
+    </head>
+    <body>
+        <h4>Factors of any number are those numbers that can divide 
+            the number under question without remainder.</h4>
+        <div id="my_factors"></div>
+
+        <script>
+            var find_my_factors = 48;
+            var found_factors = [];
+            // 'count' acts as both index into array 'found_factor' and count of number of factors found
+            var count = 0;
+            var square_root_range = Math.sqrt(find_my_factors); // Use this range for our loop
+            square_root_range = Math.ceil(square_root_range);
+            var i = 1;
+
+            /*
+             * Loop through 1 to 'find_my_factors' and test for divisibility.
+             */
+            for (; i < square_root_range; i++) {
+                if ((find_my_factors % i) == 0) {
+                    found_factors[count++] = i;
+                    /* Get the complementing factor by dividing 'find_my_factor' by variable i. */
+                    found_factors[count++] = find_my_factors / i;
+                }
+            }
+
+            // Sort the array in ascending order; Not entirely necessary.
+            found_factors.sort(
+                    function (a, b) {
+                        return a - b;
+                    }
+            );
+
+            document.getElementById("my_factors").innerHTML =
+                    "The factors of " + find_my_factors + " are: <br />" + found_factors.join(", ");
+        </script>
+    </body>
+</html>

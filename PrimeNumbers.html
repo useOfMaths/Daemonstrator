@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Listing Prime Numbers</title>
+        <script src="PrimeNumbers.js"></script>
+    </head>
+    <body>
+        <h4>
+            Prime numbers are numbers that can only be divided by themselves and 1 
+            without remainder.<br />Here is a list of them (between 1 and 99 inclusive).
+        </h4>
+
+        <div id="my_primes"></div>
+
+        <script>
+            /*
+            * The array variable prime_numbers has our prime numbers.
+            * Use the array method 'join' to display the values. 
+            */
+            document.getElementById("my_primes").innerHTML = prime_numbers.join(", ");
+        </script>
+    </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Testing For A Prime Number</title>
+    </head>
+    <body>
+
+        <h4>The number 97 seems like a prime number. Let's find out.</h4>
+        <div id="test_result"></div>
+
+        <script>
+            var prime_suspect = 97; // We are suspecting this to be a prime number
+            var failed_test = false; // We will change it to 'true' if 'prime_suspect' fails our test
+
+            /* The easy way out is to loop numbers 2 - 96 and see if they can divide
+            97 without without remainder. */
+            for (var i = 2; i < prime_suspect; i++) {
+                if ((prime_suspect % i) == 0) { // %(modulus) is explained below.
+                    failed_test = true;
+                    document.getElementById("test_result").innerHTML =
+                    "No, " + prime_suspect + " is not a prime number. The number " + i + " is a factor of " + prime_suspect;
+                    break; // Abandon the rest of the loop. 'prime_suspect' has failed our test.
+                }
+            }
+
+            if (failed_test == false) { // see if prime_suspect passed the test
+                document.getElementById("test_result").innerHTML = "Yes, " + prime_suspect + " is a prime number.";
+            }
+        </script>
+    </body>
+</html>

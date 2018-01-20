@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Listing The Prime Factors Of A Number.</title>
+    </head>
+    <body>
+        <h4>Prime factors constitutes those factors of a number that are prime.</h4>
+        <div id="prime_factors"></div>
+
+        <script>
+            var find_my_factors = 48;
+            var found_prime_factors = [];
+            var count = 0; // index into array 'found_prime_factors'
+            var i = 2; // variable for our function loop
+
+            onlyPrimeFactors(find_my_factors); // Call our function
+
+            /* If variable find_my_factors is a prime number(has no factors), we simply say so. */
+            document.getElementById("prime_factors").innerHTML = found_prime_factors.length > 1 ?
+            "The prime factors of " + find_my_factors + " are: <br />" + found_prime_factors.join(" X ") :
+            find_my_factors + " has no other factors except 1 and itself. It is a prime number.";
+
+            /*
+            * Our function checks 'find_my_factors';
+            * If it finds a factor, it records this factor,
+            * then divides 'find_my_factors' by the found factor
+            * and makes this the new 'find_my_factors'.
+            * It continues recursively until all factors are found.
+            */
+            function onlyPrimeFactors(sub_level) {
+                //STEP 5
+                var temp_limit = Math.ceil(Math.sqrt(sub_level));
+
+                //STEP 1
+                while (i <= temp_limit) {
+                    if (i != 1 && (sub_level % i) == 0) { // avoid an infinite loop with the i != 1 check.
+                        found_prime_factors[count++] = i;
+                        //STEPS 2, 3, 4
+                        return onlyPrimeFactors(sub_level / i);
+                    }
+                    i++;
+                }
+
+                found_prime_factors[count] = sub_level;
+
+                return;
+            }
+        </script>
+    </body>
+</html>

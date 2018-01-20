@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Find H.C.F.</title>
+        <script src="FastHCF.js"></script>
+    </head>
+    <body>
+        <h4>Highest Common Factors of a Group of Numbers.</h4>
+
+        <br/>
+        <div id="myHCF">Your result is displayed here...</div>
+
+        <script>
+            var group_of_numbers = [];
+            var input;
+            var input_instruction = "Enter first number: ";
+            var hold = "";
+            var j = 0;
+            alert("Welcome to our bot!");
+            do {
+                // get keyboard input
+                input = prompt(input_instruction, "");
+                // Convert 'user_input' to upper case.
+                input = input.toUpperCase();
+                // Make sure input is a number
+                if (/[0-9]+/.test(input)) {
+                    if (input != 0) {
+                        group_of_numbers[j] = parseInt(input);
+                        hold += group_of_numbers[j] + "; "
+                        input_instruction = hold + "seen! \nType 'done' when you're finished \nNow Enter Next Number:  ";
+                        j++;
+                    } else {
+                        alert("You cannot enter zero. Repeat that!\nType 'done' when you're finished.");
+                    }
+                } else if (input != "DONE") {
+                    alert("Wrong Input. Repeat that!\nType 'done' when you're finished.\n");
+                }
+            } while (input != "DONE");
+
+            var result = getFastHCF(group_of_numbers);
+            document.getElementById("myHCF").innerHTML =
+                    "The H.C.F. of " + group_of_numbers.join(", ") + " is: " + result;
+        </script>
+
+    </body>
+</html>

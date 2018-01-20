@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Listing Your Own Range of Odd Numbers</title>
+    </head>
+    <body>
+        <h3>Odd Numbers for a Range of your Choice</h3>
+
+        <form name="users_range" action="javascript:diplayNumbers()">
+            Enter Start Number: <input type="number" name="start"><br />
+            Enter End Number: <input type="number" name="end"><br /><br />
+            <button onclick="displayNumbers()">Show My List</button>
+        </form>
+        <br />
+        <!-- Users result will be shown here. -->
+        <div id="odd_numbers">Your range appears here.</div>
+
+        <script>
+            var result_text = ""; // Put the result here for speed advantage.
+                
+            function displayNumbers() {
+
+                /* Obtain an array of the form object that holds the user inputs. */
+                var form_for_user_input = document.forms["users_range"];
+
+                /* From the above array, retrieve the users first and last numbers. */
+                var first = form_for_user_input["start"].value;
+                first = parseInt(first); // convert input to number type
+                
+                var last = form_for_user_input["end"].value;
+                last = parseInt(last); // convert input to number type
+                
+                /* Now we can loop through and display the users choice range. */
+                while (first <= last) {
+                    if ((first % 2) != 0) {
+                        result_text += first + " ";
+                    }
+                    first += 1; // same as "first = first + 1"
+                }
+
+                document.getElementById("odd_numbers").innerHTML = result_text;
+
+            }
+        </script>
+    </body>
+</html>

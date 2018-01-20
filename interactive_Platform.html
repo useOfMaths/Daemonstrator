@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Interactive Platform</title>
+        <script src="interactive_platform.js"></script>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+            body {
+                background-color: #b6eea3;
+            }
+            form {
+                background-color: #b6ff00;
+                width: 49%;
+                float: left;
+            }
+            div {
+                background-color: #f8caf6;
+                width: 49%;
+                height: fill-available;
+                float: left;
+                padding: 10px;
+                margin: 1px;
+            }
+            .text {
+                height: 40px;
+            }
+            .button {
+                background-color: #69eb1b;
+                width: 80px;
+                height: 40px;
+                border: 2 solid rgba(219, 152, 222, 0.31);
+            }
+            #complex_answer {
+                margin: 5px;
+                padding: 5px;
+            }
+            table, th, td {
+                border-right: 1px solid #000;
+                border-collapse: collapse;
+            }
+            th, td {
+                padding: 15px;
+            }
+        </style>
+    </head>
+    <body>
+
+        <h2>Well, see where we are. Welcome to our Interactive Platform</h2>
+        <p>Just say what you want and we have you covered.</p>
+
+        <form name="interactive_platform" action="javascript:function(){}" onerror="alert('Your input was not in order')">
+            <output name="answer_output"></output>
+            <br />
+            <br />
+
+            <!--Input for even number-->
+            <fieldset>
+                <legend>Even Numbers</legend>
+                <input type="number" name="start_E" placeholder="start number.." class="text">&nbsp;&nbsp;&nbsp;
+                <input type="number" name="stop_E" placeholder="stop number.." class="text">&nbsp;&nbsp;&nbsp;
+                <button onclick="evenNumbers()" class="button">Display!</button>
+            </fieldset>
+            <br />
+
+            <!--Input for odd number-->
+            <fieldset>
+                <legend>Odd Numbers</legend>
+                <input type="number" name="start_O" placeholder="start number.." class="text">&nbsp;&nbsp;&nbsp;
+                <input type="number" name="stop_O" placeholder="stop number.." class="text">&nbsp;&nbsp;&nbsp;
+                <button onclick="oddNumbers()" class="button">Display!</button>
+            </fieldset>
+            <br />
+
+            <!--Input for prime numbers-->
+            <fieldset>
+                <legend>Prime Numbers</legend>
+                <input type="number" name="start_P" placeholder="start number.." class="text">&nbsp;&nbsp;&nbsp;
+                <input type="number" name="stop_P" placeholder="stop number.." class="text">&nbsp;&nbsp;&nbsp;
+                <button onclick="primeNumbers()" class="button">Display!</button>
+            </fieldset>
+            <br />
+            <br />
+
+            <!--Input for confirming prime numbers-->
+            <fieldset>
+                <legend>Check Primeness. (Is this number prime or not?)</legend>&nbsp;&nbsp;&nbsp;
+                <input type="number" name="check_P" placeholder="Enter Number.." class="text">&nbsp;&nbsp;&nbsp;
+                <button onclick="checkPrime()" class="button" class="text">Tell Me!</button>
+            </fieldset>
+            <br />
+
+            <!--Input for listing factors-->
+            <fieldset>
+                <legend>List Factors</legend>
+                <input type="number" name="to_be_factored" placeholder="Enter Number.." class="text">&nbsp;&nbsp;&nbsp;
+                <button onclick="listFactors()" class="button">List!</button>
+            </fieldset>
+            <br />
+
+            <!--Input for listing prime factors-->
+            <fieldset>
+                <legend>List Prime Factors</legend>
+                <input type="number" name="to_be_prime_factored" placeholder="Enter Number.." class="text">&nbsp;&nbsp;&nbsp;
+                <button onclick="primeFactors()" class="button">List!</button>
+            </fieldset>
+            <br />
+            <br />
+
+            <!--Input for HCF-->
+            <fieldset>
+                <legend>Highest Common Factor (H.C.F.)</legend>
+                <input type="number" name="HCF_candidate" placeholder="Enter New Number:" class="text">&nbsp;&nbsp;&nbsp;
+                <button onclick="renderHCF(false);document.forms['interactive_platform']['HCF_candidate'].focus()" class="button">Next Number!</button>&nbsp;&nbsp;&nbsp;
+                <button onclick="renderHCF(true);window.scroll(window.screen.height, window.screen.width)" class="button">Find HCF</button>
+            </fieldset>
+            <br />
+
+            <!--Input for LCM-->
+            <fieldset>
+                <legend>Lowest Common Multiple (L.C.M.)</legend>
+                <input type="number" name="LCM_candidate" id="LCM_candidate" placeholder="Enter New Number:" class="text">&nbsp;&nbsp;&nbsp;
+                <button onclick="renderLCM(false);document.getElementById('LCM_candidate').focus()" class="button">Next Number!</button>&nbsp;&nbsp;&nbsp;
+                <button onclick="renderLCM(true);window.scroll(window.screen.height, window.screen.width)" class="button">Find LCM</button>
+            </fieldset>
+
+        </form>
+        <div><div id="complex_answer"></div></div>
+        <br /><br />
+
+
+    </body>
+</html>

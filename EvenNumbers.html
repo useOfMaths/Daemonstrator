@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>List Even Numbers</title>
+    </head>
+    <body>
+
+        <h3>Here is a List of Even Numbers Between 2 and 100 Inclusive</h3>
+        <!-- This is where the result will be displayed when it is ready.-->
+        <div id="even_numbers"></div>
+
+        <script>
+
+            var start = 2; // This variable holds the first of our even numbers.
+            var end = 100; // This variable holds the last number for our series.
+
+            /* Loop through and collect all the even numbers. */
+            while (start <= 100) {
+                if ((start % 2) == 0) {
+                    document.getElementById("even_numbers").innerHTML += start + ", "; // Mind the '+' before the '=' sign.
+                }
+                start = start + 1;
+            }
+
+        </script>
+
+    </body>
+</html>

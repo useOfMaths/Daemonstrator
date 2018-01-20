@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Testing For A Prime Number</title>
+    </head>
+    <body>
+
+        <h4>The number 91 seems like a prime number. Let's find out.</h4>
+        <div id="test_result"></div>
+        
+        <script>
+            var prime_suspect = 91; // We are suspecting this to be a prime number
+            var test_range = Math.sqrt(prime_suspect); // square root
+            test_range = Math.abs(test_range); // test_range may have come out as a decimal number, make it absolute.
+            var failed_test = false; // We will change it to 'true' if 'prime_suspect' fails our test
+
+            /* Check in the range 2 - &Sqrt;97 instead. */
+            for (var i = 2; i <= test_range; i++) {
+                if ((prime_suspect % i) == 0) { // modulus(%) is explained below.
+                    failed_test = true;
+                    document.getElementById("test_result").innerHTML =
+                    "No, " + prime_suspect + " is not a prime number. The number " + i + " is a factor of " + prime_suspect;
+                    break; // Abandon the rest of the loop. 'prime_suspect' has failed our test.
+                }
+            }
+
+            if (failed_test == false) { // see if prime_suspect passed the test
+                document.getElementById("test_result").innerHTML = "Yes, " + prime_suspect + " is a prime number.";
+            }
+        </script>
+    </body>
+</html>
