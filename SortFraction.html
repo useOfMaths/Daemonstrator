@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Sorting Fractions</title>
+        <script src="LCM.js"></script>
+        <script src="AddFraction.js"></script>
+        <script src="SortFraction.js"></script>
+    </head>
+    <body>
+
+        <h3>Sort Fractions</h3>
+        <!-- This is where the result will be displayed when it is ready.-->
+        <div id="sort_fraction"></div>
+
+        <script>
+            var result = "Solving:<br/>";
+
+            // Print as fraction
+            for (var i = 0; i < numerators.length-1; i++) {
+                result += "<sup>" + numerators[i] + "</sup> / <sub>" + denominators[i] + "</sub>";
+            result += "&amp;nbsp&semi;&amp;nbsp&semi;,&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;";
+            }
+            result += "<sup>" + numerators[i] + "</sup> / <sub>" + denominators[i] + "</sub><br/><br/>";
+
+            // Carry out sort
+            sortAscending();
+
+            result += "Answer &amp;nbsp&semi;&amp;nbsp&semi;  =  &amp;nbsp&semi;&amp;nbsp&semi;  ";
+
+            // Print as fraction
+            for (var i = 0; i < final_numerators.length-1; i++) {
+                result += "<sup>" + final_numerators[i] + "</sup> / <sub>" + final_denominators[i] + "</sub>";
+            result += "&amp;nbsp&semi;&amp;nbsp&semi;,&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;";
+            }
+            result += "<sup>" + final_numerators[i] + "</sup> / <sub>" + final_denominators[i] + "</sub><br/><br/>";
+
+            document.getElementById("sort_fraction").innerHTML = result;
+        </script>
+
+    </body>
+</html>

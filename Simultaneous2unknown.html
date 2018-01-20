@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Two Dimensional Simultaneous Equation</title>
+        <script src="Simultaneous2Unknown.js"></script>
+    </head>
+    <body>
+
+        <h3>2 Dimensional Simultaneous Equation</h3>
+        <!-- This is where the result will be displayed when it is ready.-->
+        <div id="two_dim"></div>
+
+        <script>
+
+            var operator = ['+', '+'];
+            if (y_2coeff[0] < 0) {
+                operator[0] = '-';
+            }
+            if (y_2coeff[1] < 0) {
+                operator[1] = '-';
+            }
+            var result = "Solving simultaneously the equations:<br/>";
+
+            //Print as an equation
+            result += x_2coeff[0] + "x &amp;nbsp&semi;&amp;nbsp&semi;" + operator[0] + "&amp;nbsp&semi;&amp;nbsp&semi; " +
+                    Math.abs(y_2coeff[0]) + "y &amp;nbsp&semi;&amp;nbsp&semi;=&amp;nbsp&semi;&amp;nbsp&semi; " + eq_2coeff[0] + "<br/>";
+
+            result += x_2coeff[1] + "x &amp;nbsp&semi;&amp;nbsp&semi;" + operator[1] + "&amp;nbsp&semi;&amp;nbsp&semi; " +
+                    Math.abs(y_2coeff[1]) + "y &amp;nbsp&semi;&amp;nbsp&semi;=&amp;nbsp&semi;&amp;nbsp&semi; " + eq_2coeff[1] + "<br/>";
+            result += "Yields: <br/>";
+            result += "&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;";
+            result += "(x, &amp;nbsp&semi;&amp;nbsp&semi;y) &amp;nbsp&semi;&amp;nbsp&semi;=&amp;nbsp&semi;&amp;nbsp&semi; ";
+
+            try {
+                // Solve simultaneously
+                solveSimultaneous2D();
+                result += "(" + x_variable + ", &amp;nbsp&semi;&amp;nbsp&semi;" + y_variable + ")";
+            } catch (ex) {
+                result += "(&amp;infin&semi;&amp;comma&semi; &amp;infin&semi;)";
+            }
+            document.getElementById("two_dim").innerHTML = result;
+
+        </script>
+
+    </body>
+</html>

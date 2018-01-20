@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Converting from Mixed fraction to Improper fraction</title>
+    </head>
+    <body>
+
+        <h3>Converting from Mixed fraction to Improper fraction</h3>
+        <!-- This is where the result will be displayed when it is ready.-->
+        <div id="mixed_improper"></div>
+
+        <script>
+
+            var whole_number = 3;
+            var numerator = 2;
+            var denominator = 5;
+            var result = "Converting from Mixed to Improper the fraction:<br/>";
+            
+            // Print as fraction
+            result += whole_number + " <sup>" + numerator + "</sup> ";
+            result += "/ <sub>" + denominator + "</sub><br/><br/>";
+            
+            /*
+             * STEP 1, 2:
+             */
+            // Carry out conversion
+            numerator = (whole_number * denominator) + numerator;
+
+            // Print as fraction
+            // STEP 3:
+            result += "Answer &nbsp;&nbsp;  =  &nbsp;&nbsp;  " + "<sup>" + numerator + "</sup> ";
+            result += "/ <sub>" + denominator + "</sub><br/>";
+
+            document.getElementById("mixed_improper").innerHTML = result;
+            
+        </script>
+
+    </body>
+</html>

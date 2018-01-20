@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Three Dimensional Simultaneous Equation</title>
+        <script src="LCM.js"></script>
+        <script src="Simultaneous2Unknown.js"></script>
+        <script src="Simultaneous3Unknown.js"></script>
+    </head>
+    <body>
+
+        <h3>3 Dimensional Simultaneous Equation</h3>
+        <!-- This is where the result will be displayed when it is ready.-->
+        <div id="three_dim"></div>
+
+        <script>
+
+            var operator = [];
+            operator[0] = ['+', '+'];
+            operator[1] = ['+', '+'];
+            operator[2] = ['+', '+'];
+            for (var i = 0; i < 3; i++) {
+                if (y_3coeff[i] < 0) {
+                    operator[i][0] = '-';
+                }
+                if (z_3coeff[i] < 0) {
+                    operator[i][1] = '-';
+                }
+            }
+            var result = "Solving simultaneously the equations:<br/>";
+
+            //Print as an equation
+            result += x_3coeff[0] + "x &amp;nbsp&semi;&amp;nbsp&semi;" + operator[0][0] + 
+                    "&amp;nbsp&semi;&amp;nbsp&semi; " + Math.abs(y_3coeff[0]) + "y &amp;nbsp&semi;&amp;nbsp&semi;" + 
+                    operator[0][1] + "&amp;nbsp&semi;&amp;nbsp&semi; " + Math.abs(z_3coeff[0]) + 
+                    "z &amp;nbsp&semi;&amp;nbsp&semi;=&amp;nbsp&semi;&amp;nbsp&semi; " + eq_3coeff[0] + "<br/>";
+
+            result += x_3coeff[1] + "x &amp;nbsp&semi;&amp;nbsp&semi;" + operator[1][0] + 
+                    "&amp;nbsp&semi;&amp;nbsp&semi; " + Math.abs(y_3coeff[1]) + "y &amp;nbsp&semi;&amp;nbsp&semi;" + 
+                    operator[1][1] + "&amp;nbsp&semi;&amp;nbsp&semi; " + Math.abs(z_3coeff[1]) + 
+                    "z &amp;nbsp&semi;&amp;nbsp&semi;=&amp;nbsp&semi;&amp;nbsp&semi; " + eq_3coeff[1] + "<br/>";
+
+            result += x_3coeff[2] + "x &amp;nbsp&semi;&amp;nbsp&semi;" + operator[2][0] + 
+                    "&amp;nbsp&semi;&amp;nbsp&semi; " + Math.abs(y_3coeff[2]) + "y &amp;nbsp&semi;&amp;nbsp&semi;" + 
+                    operator[2][1] + "&amp;nbsp&semi;&amp;nbsp&semi; " + Math.abs(z_3coeff[2]) + 
+                    "z &amp;nbsp&semi;&amp;nbsp&semi;=&amp;nbsp&semi;&amp;nbsp&semi; " + eq_3coeff[2] + "<br/>";
+            result += "Yields: <br/>";
+
+            result += "(x, &amp;nbsp&semi;&amp;nbsp&semi;y, &amp;nbsp&semi;&amp;nbsp&semi;z) &amp;nbsp&semi;&amp;nbsp&semi;=&amp;nbsp&semi;&amp;nbsp&semi; ";
+
+            try {
+                // Solve simultaneously
+                solveSimultaneous3D();
+                result += "(" + x_variable + ", &amp;nbsp&semi;&amp;nbsp&semi;" + y_variable + 
+                        ", &amp;nbsp&semi;&amp;nbsp&semi;" + z_variable + ")";
+            } catch (ex) {
+                result += "(&amp;infin&semi;&amp;comma&semi; &amp;nbsp&semi;&amp;nbsp&semi;&amp;infin&semi;&amp;comma&semi; &amp;nbsp&semi;&amp;nbsp&semi;&amp;infin&semi;)";
+            }
+            document.getElementById("three_dim").innerHTML = result;
+
+        </script>
+
+    </body>
+</html>

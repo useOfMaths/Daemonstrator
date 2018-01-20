@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Reducing Fractions to their Lowest Terms</title>
+    </head>
+    <body>
+
+        <h3>Reduce Fractions to their Lowest Terms</h3>
+        <!-- This is where the result will be displayed when it is ready.-->
+        <div id="lowest_term"></div>
+
+        <script>
+
+            var numerator = 16;
+            var denominator = 640;
+            var trial_factor;
+            // between numerator and denominator take the larger one
+            numerator < denominator ? trial_factor = numerator : trial_factor = denominator;
+
+            var result = "Reducing to its lowest term the fraction:<br/>";
+
+            // Print as fraction
+            result += "<sup>" + numerator + "</sup> / <sub>" + denominator + "</sub><br/><br/>";
+
+            // Carry out reduction
+            // We are counting down to test for mutual factors 
+            while (trial_factor > 1) {
+                // do we have a factor
+                if ((numerator % trial_factor) === 0) {
+                    // is this factor mutual?
+                    if ((denominator % trial_factor) === 0) {
+                        // where we have a mutual factor
+                        numerator /= trial_factor;
+                        denominator /= trial_factor;
+                        continue; // next iteration; repeating the current value of trial_factor
+                    }
+                }
+                trial_factor--;
+            }
+
+            // Print as fraction
+            result += "Answer &amp;nbsp&semi;&amp;nbsp&semi;  =  &amp;nbsp&semi;&amp;nbsp&semi;  ";
+            result += " <sup>" + numerator + "</sup> ";
+            result += "/ <sub>" + denominator + "</sub><br/>";
+
+            document.getElementById("lowest_term").innerHTML = result;
+
+        </script>
+
+    </body>
+</html>

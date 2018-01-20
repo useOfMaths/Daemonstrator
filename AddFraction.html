@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Adding Fractions</title>
+        <script src="LCM.js"></script>
+        <script src="AddFraction.js"></script>
+    </head>
+    <body>
+
+        <h3>Add Fractions</h3>
+        <!-- This is where the result will be displayed when it is ready.-->
+        <div id="add_fraction"></div>
+
+        <script>
+
+            var result = "Solving:<br/>";
+
+            // Print as fraction
+            for (var i = 0; i < numerators.length-1; i++) {
+                result += "<sup>" + numerators[i] + "</sup> / <sub>" + denominators[i] + "</sub>";
+            result += "&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;+&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;";
+            }
+            result += "<sup>" + numerators[i] + "</sup> / <sub>" + denominators[i] + "</sub><br/><br/>";
+
+            // Carry out addition
+            doAdd();
+
+            // Print as fraction
+            result += "Answer &amp;nbsp&semi;&amp;nbsp&semi;  =  &amp;nbsp&semi;&amp;nbsp&semi;  ";
+            result += " <sup>" + answer + "</sup> ";
+            result += "/ <sub>" + LCM + "</sub><br/>";
+
+            document.getElementById("add_fraction").innerHTML = result;
+
+        </script>
+
+    </body>
+</html>

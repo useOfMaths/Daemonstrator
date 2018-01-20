@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Multiplying Fractions</title>
+        <script src="MultiplyFraction.js"></script>
+    </head>
+    <body>
+
+        <h3>Multiply Fractions</h3>
+        <!-- This is where the result will be displayed when it is ready.-->
+        <div id="multiply_fraction"></div>
+
+        <script>
+            var result = "Solving:<br/>";
+            result += "&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;";
+            // Print as fraction
+            for (var i = 0; i < numerators.length - 1; i++) {
+                result += "<sup>" + numerators[i] + "</sup> / <sub>" + denominators[i] + "</sub>";
+                result += "&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;x&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;";
+            }
+            result += "<sup>" + numerators[i] + "</sup> / <sub>" + denominators[i] + "</sub><br/><br/>";
+
+            try {
+                // Carry out multiplication
+				maxMember();
+                doMultiply();
+
+                result += "&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;&amp;nbsp&semi;";
+                // Print as fraction
+                result += "Answer &amp;nbsp&semi;&amp;nbsp&semi;  =  &amp;nbsp&semi;&amp;nbsp&semi;  ";
+                result += " <sup>" + answer[0] + "</sup> ";
+                result += "/ <sub>" + answer[1] + "</sub><br/>";
+
+                document.getElementById("multiply_fraction").innerHTML = result;
+            } catch (e) {
+                alert(e.toString);
+            }
+        </script>
+
+    </body>
+</html>

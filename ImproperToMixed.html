@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Converting from Improper fraction to Mixed fraction</title>
+    </head>
+    <body>
+
+        <h3>Converting from Improper to Mixed the fraction</h3>
+        <!-- This is where the result will be displayed when it is ready.-->
+        <div id="improper_mixed"></div>
+
+        <script>
+
+            var numerator = 10;
+            var denominator = 3;
+            var whole_number;
+            var new_numerator = numerator;
+            var result = "Converting from Improper to Mixed the fraction:<br/>";
+
+            // Print as fraction
+            result += "<sup>" + numerator + "</sup> / <sub>" + denominator + "</sub><br/><br/>";
+
+            var dividend; // Highest multiple of denominator less than numerator
+            // Carry out conversion
+            // STEP 1:
+            for (dividend = numerator - 1; dividend > 1; dividend--) {
+                if ((dividend % denominator) === 0) {
+                    // STEP 2:
+                    new_numerator = numerator - dividend;
+                    // STEP 3:
+                    whole_number = dividend / denominator;
+                    break;
+                }
+            }
+
+            // Print as fraction
+            // STEP 4:
+            result += "Answer &nbsp;&nbsp;  =  &nbsp;&nbsp;  " + whole_number; 
+            result += " <sup>" + new_numerator + "</sup> ";
+            result += "/ <sub>" + denominator + "</sub><br/>";
+
+            document.getElementById("improper_mixed").innerHTML = result;
+            
+        </script>
+
+    </body>
+</html>
