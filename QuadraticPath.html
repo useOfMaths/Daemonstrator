@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Quadratic Track</title>
+    </head>
+    <body>
+
+        <h3>Move in the Trajectory of a Quadratic Curve</h3>
+
+        <canvas id="move_quad" width="500" height="300" style="border: 1px solid #000000;">
+            Your browser (version) does not support canvas object; Time to update!
+        </canvas>
+        <button onclick="moveQuadratic()">Move</button>
+
+        <script>
+            var canvas = document.getElementById("move_quad");
+            var context = canvas.getContext("2d");
+            context.fillStyle = "#888888"; // color for our moving body(circle)
+
+            var x_start = 50;
+            var y_start = 200;
+            var x_max = 200;
+            var y_max = 50;
+            var x = x_start;
+            var y = y_start;
+            // draw a dot
+            context.beginPath();
+            context.arc(x, y, 5, 0, 2 * Math.PI);
+            context.fill();
+
+            // constants
+            var a = (y_start - y_max) / Math.pow((x_start - x_max), 2);
+            var b = -2 * a * x_max;
+            var c = y_max + a * Math.pow(x_max, 2);
+            var x_stop = 350;
+            function moveQuadratic() {
+                // condition for continuing motion
+                if (x <= x_stop) {
+                    y = a * x * x + b * x + c;
+
+                    // redraw dot
+                    context.beginPath();
+                    context.arc(x, y, 5, 0, 2 * Math.PI);
+                    context.fill();
+
+                    x += 20;
+                    setTimeout(function () { moveQuadratic(); }, 100);
+                }
+            }
+        </script>
+
+    </body>
+</html>

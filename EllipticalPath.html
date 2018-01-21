@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Elliptical Track</title>
+    </head>
+    <body>
+
+        <h3>Move in the Path of a Ellipse</h3>
+
+        <canvas id="move_ellip" width="500" height="350" style="border: 1px solid #000000;">
+            Your browser (version) does not support canvas object; Time to update!
+        </canvas>
+        <button onclick="moveElliptic()">Move</button>
+
+        <script>
+            var canvas = document.getElementById("move_ellip");
+            var context = canvas.getContext("2d");
+            context.fillStyle = "#888888"; // color for our body(circle)
+
+            var h = 250;
+            var k = 175;
+            var a = 150;
+            var b = 100;
+            var x = h - a;
+            var y = k;
+            // draw a dot
+            context.beginPath();
+            context.arc(x, y, 5, 0, 2 * Math.PI);
+            context.fill();
+
+            function moveElliptic() {
+                // condition for continuing motion
+                if (x <= h + a) {
+                    y = k - (b / a) * Math.sqrt(Math.pow(a, 2) - Math.pow((x - h), 2));
+                    // redraw dot (upper curve)
+                    context.beginPath();
+                    context.arc(x, y, 5, 0, 2 * Math.PI);
+                    context.fill();
+
+                    y = k + (b / a) * Math.sqrt(Math.pow(a, 2) - Math.pow((x - h), 2));
+                    // redraw dot (lower curve)
+                    context.beginPath();
+                    context.arc(x, y, 5, 0, 2 * Math.PI);
+                    context.fill();
+
+                    x += 20;
+                    setTimeout(function () { moveElliptic(); }, 200);
+                }
+            }
+        </script>
+
+    </body>
+</html>

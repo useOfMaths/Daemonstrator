@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Circular Track</title>
+    </head>
+    <body>
+
+        <h3>Move in the Path of a Circle</h3>
+
+        <canvas id="move_quad" width="500" height="350" style="border: 1px solid #000000;">
+            Your browser (version) does not support canvas object; Time to update!
+        </canvas>
+        <button onclick="moveCyclic()">Move</button>
+
+        <script>
+            var canvas = document.getElementById("move_quad");
+            var context = canvas.getContext("2d");
+            context.fillStyle = "#888888"; // color for our body(circle)
+
+            var a = 250;
+            var b = 175;
+            var r = 150;
+            var x = a - r;
+            var y = b;
+            // draw a dot
+            context.beginPath();
+            context.arc(x, y, 5, 0, 2 * Math.PI);
+            context.fill();
+
+            function moveCyclic() {
+                // condition for continuing motion
+                if (x <= a + r) {
+                    y = b - Math.sqrt(Math.pow(r, 2) - Math.pow((x - a), 2));
+                    // redraw dot (upper curve)
+                    context.beginPath();
+                    context.arc(x, y, 5, 0, 2 * Math.PI);
+                    context.fill();
+
+                    y = b + Math.sqrt(Math.pow(r, 2) - Math.pow((x - a), 2));
+                    // redraw dot (lower curve)
+                    context.beginPath();
+                    context.arc(x, y, 5, 0, 2 * Math.PI);
+                    context.fill();
+
+                    x += 20;
+                    setTimeout(function () { moveCyclic(); }, 200);
+                }
+            }
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Straight Track</title>
+    </head>
+    <body>
+
+        <h3>Move in a Line using its Equation</h3>
+
+        <canvas id="move_line" width="500" height="300" style="border: 1px solid #000000;">
+            Your browser (version) does not support canvas object; Time to update!
+        </canvas>
+        <button onclick="moveInLine()">Move</button>
+
+        <script>
+            var canvas = document.getElementById("move_line");
+            var context = canvas.getContext("2d");
+            context.fillStyle = "#888888"; // color for our moving body(circle)
+
+            var x1 = 50;
+            var x2 = 200;
+            var y1 = 50;
+            var y2 = 100;
+            var x = x1;
+            var y = y1;
+            // draw a dot
+            context.beginPath();
+            context.arc(x, y, 5, 0, 2 * Math.PI);
+            context.fill();
+
+            var m = (y2 - y1) / (x2 - x1); // slope
+            var c = (x2 * y1  -  x1 * y2) / (x2 - x1); // y-intercept
+            function moveInLine() {
+                // condition for continuing motion
+                if (x <= 440) {
+                    y = m * x + c;
+
+                    // redraw dot
+                    context.beginPath();
+                    context.arc(x, y, 5, 0, 2 * Math.PI);
+                    context.fill();
+
+                    x += 20;
+                    setTimeout(function () { moveInLine(); }, 100);
+                }
+            }
+        </script>
+
+    </body>
+</html>

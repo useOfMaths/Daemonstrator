@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Moving Body</title>
+    </head>
+    <body>
+
+        <h3>Make a Body Move Across the Canvas</h3>
+
+        <canvas id="move_body" width="500" height="300" style="border: 1px solid #000000;">
+            Your browser (version) does not support canvas object; Time to update!
+        </canvas>
+        <button onclick="doGlide()">Glide</button>
+        <button onclick="clearTimeout(clr_obj)">Stop</button>
+
+        <script>
+            var canvas = document.getElementById("move_body");
+            var context = canvas.getContext("2d");
+            // color for our moving body(circle)
+            context.fillStyle = "#888888";
+
+            var x = 50;
+            var y = 150;
+            var radius = 40;
+            // draw a circle
+            context.beginPath();
+            context.arc(x, y, radius, 0,  2 * Math.PI);
+            context.fill();
+
+            var clr_obj;
+            function doGlide() {
+                // condition for continuing motion
+                if (x <= 440) {
+                    // erase previous circle
+                    context.clearRect(x - radius - 10, y - radius, 80, 80);
+
+                    // redraw circle
+                    context.beginPath();
+                    context.arc(x, y, radius, 0, 2 * Math.PI);
+                    context.fill();
+
+                    x += 10;
+                    clr_obj = setTimeout(function(){doGlide();}, 50);
+                }
+            }
+        </script>
+
+    </body>
+</html>

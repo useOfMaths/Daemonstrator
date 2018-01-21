@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Trigonometric Track</title>
+    </head>
+    <body>
+
+        <h3>Move in the Trajectory of a Trigonometric Curve</h3>
+
+        <canvas id="trig_fn" width="500" height="300" style="border: 1px solid #000000;">
+            Your browser (version) does not support canvas object; Time to update!
+        </canvas>
+        <button onclick="moveTrigonometric()">Move</button>
+
+        <script>
+            var canvas = document.getElementById("trig_fn");
+            var context = canvas.getContext("2d");
+            context.translate(0, 150);
+            context.fillStyle = "#888888";
+            
+            var theta = 0;
+            var a = 100; // constant
+            // convert theta from degree to radians
+            var y = a * Math.sin(theta * Math.PI / 180);
+
+            // draw a dot
+            context.beginPath();
+            context.arc(theta, y, 5, 0, 2 * Math.PI);
+            context.fill();
+
+            function moveTrigonometric() {
+                // condition for continuing motion
+                if (theta < 495) {
+                    y = a * Math.sin(theta * Math.PI / 180);
+
+                    // redraw dot
+                    context.beginPath();
+                    context.arc(theta, y, 5, 0, 2 * Math.PI);
+                    context.fill();
+
+                    theta += 15;
+                    setTimeout(function () { moveTrigonometric(); }, 100);
+                }
+            }
+        </script>
+
+    </body>
+</html>

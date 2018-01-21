@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Diagonal Region</title>
+    </head>
+    <body>
+
+        <h3>Detect when a Body crosses a Diagonal Line</h3>
+
+        <canvas id="line_region" width="600" height="300" style="border: 1px solid #000000;">
+            Your browser (version) does not support canvas object; Time to update!
+        </canvas>
+        <button onclick="doGlide()">Glide</button>
+        <button onclick="clearTimeout(clr_obj)">Stop</button>
+
+        <script>
+            var canvas = document.getElementById("line_region");
+            var context = canvas.getContext("2d");
+            context.fillStyle = "#888888"; // color for our moving body(circle)
+
+            // coordinates for the ball(circle)
+            var x_ball = 50;
+            var y_ball = 150;
+            var radius = 40;
+            // draw the circle
+            context.beginPath();
+            context.arc(x_ball, y_ball, radius, 0,  2 * Math.PI);
+            context.fill();
+
+            //draw diagonal line
+            context.moveTo(300, 290);
+            context.lineTo(400, 10);
+            context.stroke();
+
+            var x1 = 300;
+            var x2 = 400;
+            var y1 = 290;
+            var y2 = 10;
+            var m = (y2 - y1) / (x2 - x1); // slope
+            var c = (x2 * y1 - x1 * y2) / (x2 - x1); // y-intercept
+            // x-coordinate for diagonal line
+            var x_line = (y_ball - c) / m;
+
+            var clr_obj;
+            function doGlide() {
+                // condition for continuing motion
+                if (x_ball <= 540) {
+                    context.clearRect(x_ball - radius - 10, y_ball - radius, 80, 80); // erase previous circle
+                    if (x_ball >= x_line) {
+                        context.fillStyle = "#00ff00"; // color for our moving body(circle)
+                    }
+                    // redraw circle
+                    context.beginPath();
+                    context.arc(x_ball, y_ball, 40, 0, 2 * Math.PI);
+                    context.fill();
+
+                    x_ball += 10;
+                    clr_obj = setTimeout(function () { doGlide(); }, 100);
+                }
+            }
+        </script>
+
+    </body>
+</html>
