@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Word Combination</title>
+        <script src="Combination.js"></script>
+    </head>
+    <body>
+
+        <h3>Selection Without Repetition</h3>
+        <!-- This is where the result will be displayed when it is ready.-->
+        <div id="word_combo"></div>
+
+        <script>
+            var result =
+                    possibleWordCombinations(["Eno", "Chidi", "Olu", "Ahmed", "Osas", "Gbeda"], 3);
+            document.getElementById("word_combo").innerHTML +=
+                    words.join(", ") + " combination " + r + ":<br/><br/>" + result.join("<br/>") +
+                    ";<br/><br/>Number of ways is " + result.length + ".";
+        </script>
+
+    </body>
+</html>

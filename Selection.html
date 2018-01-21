@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Selection</title>
+        <script src="Selection.js"></script>
+    </head>
+    <body>
+
+        <h3>Possible Selections with Repetition</h3>
+        <!-- This is where the result will be displayed when it is ready.-->
+        <div id="word_select"></div>
+
+        <script>
+            var result =
+                    groupSelection([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 6);
+            document.getElementById("word_select").innerHTML +=
+                    ";<br/><br/>Selections include: <br/>" + result.join(";<br/>") +
+                    ";<br/><br/>Number of ways is " + result.length + ".";
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hashes</title>
+        <script src="BigInteger.min.js"></script>
+        <script src="Hashes.js"></script>
+    </head>
+    <body>
+
+        <h3>One Way Encryption</h3>
+        <!-- This is where the result will be displayed when it is ready.-->
+        <div id="word_hash"></div>
+
+        <script>
+			var message = "merry xmas";
+            var result = hashWord(message);
+            document.getElementById("word_hash").innerHTML +=
+                    "Message is '" + message + "';<br/><br/>Encrypted version is '" + result + "'.";
+        </script>
+
+    </body>
+</html>

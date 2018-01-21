@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dual Key Encryption</title>
+        <script src="LCM.js"></script>
+        <script src="BigInteger.min.js"></script>
+        <script src="DualKeyEncryption.js"></script>
+    </head>
+    <body>
+
+        <h3>Public / Private Key Encryption</h3>
+        <!-- This is where the result will be displayed when it is ready.-->
+        <div id="word_encrypt"></div>
+
+        <script>
+            /*
+             * STEP I:
+             */
+            var p1 = 101; // 1st prime
+            var p2 = 401; // 2nd prime
+            /*
+             * STEP II:
+             */
+            var semi_prime = p1*p2;
+            
+            /*
+             * STEP III:
+             */
+            // get L.C.M. of p1-1 and p2-1
+            var lcm  = getLCM([p1-1, p2-1]);
+            
+            /*
+             * STEP IV:
+             */
+            // pick a random prime (public_key) that lies
+            // between 1 and LCM but not a factor of LCM
+            var public_key = 313;
+            
+            // find 'public_key' complement - private_key - such that
+            // (public_key * private_key) % LCM = 1
+            //this involves some measure of trial and error
+            var i = 1;
+            while ((lcm*i + 1) % public_key != 0) {
+                i++;
+            }
+            /*
+             * STEP V:
+             */
+            var private_key = (i*lcm + 1) / public_key;
+            
+			var message = "merry xmas";
+            var result = encodeWord(message, public_key, semi_prime);
+            document.getElementById("word_encrypt").innerHTML += "Message is '" + message + "';<br/>" +
+                    "<br/>Publicly encrypted version is [" + result.join(", ") + "]";
+            
+            result = decodeWord(result, private_key, semi_prime);
+            document.getElementById("word_encrypt").innerHTML +=
+                    "<br/><br/>Decrypted message is '" + result + "'.";
+        </script>
+
+    </body>
+</html>

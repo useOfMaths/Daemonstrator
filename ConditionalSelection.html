@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Limited Selection</title>
+        <script src="Selection.js"></script>
+        <script src="ConditionalSelection.js"></script>
+    </head>
+    <body>
+
+        <h3>Selections with Limits to Repetition</h3>
+        <!-- This is where the result will be displayed when it is ready.-->
+        <div id="limit_select"></div>
+
+        <script>
+            var result = limitedSelection([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 9,
+                    //      minimum values                  maximum values
+                    [0, 0, 1, 0, 0, 1, 0, 0, 1, 0], [4, 3, 2, 4, 3, 2, 4, 3, 2, 4]);
+            document.getElementById("limit_select").innerHTML +=
+                    ";<br/><br/>Selections include: <br/>" + result.join(";<br/>") +
+                    ";<br/><br/>Number of ways is " + result.length + ".";
+        </script>
+
+    </body>
+</html>

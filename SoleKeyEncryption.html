@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Single Key Encryption</title>
+        <script src="BigInteger.min.js"></script>
+        <script src="SoleKeyEncryption.js"></script>
+    </head>
+    <body>
+
+        <h3>Single Secret Key Encryption</h3>
+        <!-- This is where the result will be displayed when it is ready.-->
+        <div id="word_encrypt"></div>
+
+        <script>
+            var message = "merry xmas";
+            var key = "A5FB17C4D8".split(""); // you might want to avoid zeroes
+            
+            var result = encodeWord(message, key);
+            document.getElementById("word_encrypt").innerHTML +=
+                    "Message is '" + message + "';<br/>Encrypted version is '" + result.join(", ") + "'.";
+            
+            result = decodeWord(result, key);
+            document.getElementById("word_encrypt").innerHTML +=
+                    "<br/><br/>Decrypted message is '" + result.join("") + "'.";
+        </script>
+
+    </body>
+</html>
